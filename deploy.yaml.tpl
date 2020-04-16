@@ -34,6 +34,6 @@ spec:
     app: hello-cloudbuild
   ports:
   - protocol: TCP
-    port: 8080
+    port: 9000
     targetPort: 80
   type: LoadBalancer
