@@ -18,7 +18,7 @@ spec:
       - name: hello-cloudbuild
         image: gcr.io/GOOGLE_CLOUD_PROJECT/apacheimage:COMMIT_SHA
         ports:
-        - containerPort: 8080
+        - containerPort: 80
       tolerations:
       - key: "cpu_num"
         operator: "Equal"
@@ -34,6 +34,6 @@ spec:
     app: hello-cloudbuild
   ports:
   - protocol: TCP
-    port: 80
-    targetPort: 8080
+    port: 8080
+    targetPort: 80
   type: LoadBalancer
