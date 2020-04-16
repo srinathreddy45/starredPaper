@@ -17,6 +17,16 @@ steps:
   - 'push'
   - 'gcr.io/$PROJECT_ID/apacheimage:$SHORT_SHA'
   
+#This step changes the image in deploy yaml
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: Generate manifest
+  entrypoint: /bin/sh
+  args:
+  - '-c'
+  - |
+     sed "s/GOOGLE_CLOUD_PROJECT/${PROJECT_ID}/g" deploy.yaml.tpl | \
+     sed "s/COMMIT_SHA/${SHORT_SHA}/g" > deploy.yaml
+  
 - name: 'gcr.io/cloud-builders/kubectl'
   id: Deploy
   args:
@@ -26,5 +36,3 @@ steps:
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
   - 'CLOUDSDK_CONTAINER_CLUSTER=test-cluster'
-  - 'PROJECT_NAME=$PROJECT_ID'
-  - 'COMMIT_SHA=$SHORT_SHA'
