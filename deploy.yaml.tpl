@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: hello-cloudbuild
-        image: gcr.io/$PROJECT_NAME/apacheimage:$COMMIT_SHA
+        image: gcr.io/GOOGLE_CLOUD_PROJECT/apacheimage:COMMIT_SHA
         ports:
         - containerPort: 80
       tolerations:
