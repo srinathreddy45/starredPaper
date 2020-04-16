@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:latest
 
 # File Author / Maintainer
 MAINTAINER srinath_reddy
